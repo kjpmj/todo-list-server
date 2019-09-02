@@ -21,15 +21,19 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/todos', (req, res, next)=>{
-  res.send({id:1, text:'hi express', complete : false});
+  res.json([
+    {id:1, text:'hi express', complete : false}
+  ]);
 });
 
 // Node.js의 native Promise 사용
 mongoose.Promise = global.Promise;
 
 // CONNECT TO MONGODB SERVER
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Successfully connected to mongodb'))
-  .catch(e => console.error(e));
+// mongoose.connect(process.env.MONGO_URI)
+//   .then(() => console.log('Successfully connected to mongodb'))
+//   .catch(e => console.error(e));
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+// app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+module.exports = app;
